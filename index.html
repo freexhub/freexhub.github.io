@@ -24,6 +24,7 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
+      position: relative;
     }
     .logo {
       font-size: 1.8rem;
@@ -50,10 +51,14 @@
       background: white;
       margin: 4px 0;
     }
+
+    /* ✅ Responsive menu fix */
     @media(max-width: 600px) {
       nav {
         display: none;
         flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
         background-color: #00796b;
         position: absolute;
         top: 100%;
@@ -68,6 +73,7 @@
         display: flex;
       }
     }
+
     main {
       max-width: 800px;
       margin: 20px auto;
@@ -92,7 +98,7 @@
     }
     .anime-grid {
       display: grid;
-      grid-template-columns: 1fr; /* ✅ 1 คอลัมน์ทุกขนาด */
+      grid-template-columns: 1fr;
       gap: 20px;
     }
     .anime-card {
@@ -167,17 +173,17 @@
 </head>
 <body>
 <header>
-<a class="logo" href="/">FreexHub</a>
-<div aria-label="Toggle menu" class="menu-toggle" id="menuToggle" role="button" tabindex="0">
-<span></span><span></span><span></span>
-</div>
-<nav id="navMenu" role="navigation">
-<a href="contact">ติดต่อแจ้งปัญหา</a>
-</nav>
+  <a class="logo" href="/">FreexHub</a>
+  <div class="menu-toggle" id="menuToggle" role="button" tabindex="0" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </div>
+  <nav id="navMenu" role="navigation">
+    <a href="contact">ติดต่อแจ้งปัญหา</a>
+  </nav>
 </header>
 
 <main>
-  <h1>FreexHub -หีไทย หนังโป๊ฟรีออนไลน์ คลิปหลุด ดาราไทยคลิปหลุด หนังโป๊ไทย ลักหลับ เลียหี javญี่ปุ่น หนังAV ช่วยตัวเอง เครื่องสั่นหี หนังโป๊เกาหลี หนังโป๊จีน</h1>
+  <h1>FreexHub - หีไทย หนังโป๊ฟรีออนไลน์ คลิปหลุด ดาราไทยคลิปหลุด หนังโป๊ไทย ลักหลับ เลียหี javญี่ปุ่น หนังAV ช่วยตัวเอง เครื่องสั่นหี หนังโป๊เกาหลี หนังโป๊จีน</h1>
   <div class="search-container">
     <input id="searchInput" type="search" placeholder="ค้นหาอนิเมะ..." aria-label="ค้นหาอนิเมะ" />
   </div>
