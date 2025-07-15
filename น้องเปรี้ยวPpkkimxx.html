@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>คลิปโป้ไทยล่าสุด น้องเปรี้ยว Ppkkimxx แม่สาวตัวเด็ดดาวโอนลี่แฟน. ถ่างหีให้ผัวดูดแตดก่อนโดนเอาควยเสียบหีแบบเน้นๆ ร้องครางอย่างเสียวจนผัวเสียวหัวควยจนน้ำแตกในคารู</title>
   <link rel="icon" href="https://img5.pic.in.th/file/secure-sv1/file_000000006cec61f5bd863d1befbf3733.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
-	<link href="https://freexhub.github.io/น้องเปรี้ยวPpkkimxx.html" rel="canonical"/>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet" />
+  <link href="https://freexhub.github.io/น้องเปรี้ยวPpkkimxx.html" rel="canonical" />
   <style>
     body {
       margin: 0;
@@ -21,6 +21,7 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
+      position: relative;
     }
     .logo {
       font-size: 1.8rem;
@@ -42,6 +43,39 @@
     nav a:hover {
       color: #4db6ac;
     }
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 4px 0;
+    }
+
+    @media(max-width: 600px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+        background-color: #00796b;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 10;
+      }
+      nav.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
     main {
       max-width: 1000px;
       margin: 20px auto;
@@ -53,25 +87,6 @@
       color: #80cbc4;
       margin-bottom: 10px;
       font-weight: 700;
-    }
-    .nav-buttons-top {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .nav-buttons-top button {
-      background-color: #00796b;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      margin: 0 5px;
-      font-weight: bold;
-      font-size: 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    .nav-buttons-top button:hover {
-      background-color: #4db6ac;
     }
     .video-wrapper {
       position: relative;
@@ -92,7 +107,7 @@
       width: 100%;
       height: 100%;
       border: none;
-      pointer-events: none;
+      pointer-events: auto;
     }
     .btn-group {
       text-align: center;
@@ -141,26 +156,22 @@
 <header>
   <a class="logo" href="/">FreexHub</a>
   <div class="menu-toggle" id="menuToggle" role="button" tabindex="0" aria-label="Toggle menu">
-    <span></span><span></span><span></span>
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
   <nav id="navMenu" role="navigation">
     <a href="contact">ติดต่อแจ้งปัญหา</a>
-      <a href="jav">JAV</a>
-      <a href="คลิปหลุด">คลิปหลุด</a>
-      <a href="แตกใน">แตกใน</a>
-      <a href="หนังโป๊ไทยล่าสุด">หนังโป๊ไทยล่าสุด</a>
-      <a href="ลักหลับ">ลักหลับ</a>
-
-
-
-
+    <a href="jav">JAV</a>
+    <a href="คลิปหลุด">คลิปหลุด</a>
+    <a href="แตกใน">แตกใน</a>
+    <a href="หนังโป๊ไทยล่าสุด">หนังโป๊ไทยล่าสุด</a>
+    <a href="ลักหลับ">ลักหลับ</a>
   </nav>
 </header>
 
 <main>
   <div class="video-title">คลิปโป้ไทยล่าสุด น้องเปรี้ยว Ppkkimxx แม่สาวตัวเด็ดดาวโอนลี่แฟน ถ่างหีให้ผัวดูดแตดก่อนโดนเอาควยเสียบหีแบบเน้นๆ ร้องครางอย่างเสียวจนผัวเสียวหัวควยจนน้ำแตกในคารู</div>
-
-  
 
   <div class="video-wrapper" id="videoWrapper" title="คลิกเพื่อดูต่อ">
     <iframe id="videoPlayer" src="https://gdplayer.vip/S85Y7FJK4NI6" allow="autoplay" allowfullscreen title="คลิปโป้ไทยล่าสุด น้องเปรี้ยว Ppkkimxx แม่สาวตัวเด็ดดาวโอนลี่แฟน ถ่างหีให้ผัวดูดแตดก่อนโดนเอาควยเสียบหีแบบเน้นๆ ร้องครางอย่างเสียวจนผัวเสียวหัวควยจนน้ำแตกในคารู"></iframe>
@@ -194,19 +205,21 @@
 </script>
 
 <script>
-  const videoWrapper = document.getElementById('videoWrapper');
-  const videoPlayer = document.getElementById('videoPlayer');
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('navMenu');
   const btnGroup = document.getElementById('btnGroup');
+  const videoPlayer = document.getElementById('videoPlayer');
 
-  let adClicked = false;
-  videoWrapper.addEventListener('click', () => {
-    if (!adClicked) {
-      window.open('https://www.profitableratecpm.com/j5md7t2s4?key=283b6a46929f23da808424c8a5746f25', '_blank');
-      adClicked = true;
-      videoPlayer.style.pointerEvents = "auto";
+  // Toggle เมนูมือถือ
+  menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+  menuToggle.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      navMenu.classList.toggle('active');
     }
   });
 
+  // เปลี่ยนลิงก์สำรองวิดีโอ
   btnGroup.querySelectorAll('button[data-src]').forEach(button => {
     button.addEventListener('click', () => {
       const src = button.getAttribute('data-src');
@@ -214,6 +227,6 @@
     });
   });
 </script>
-<script type='text/javascript' src='//pl27098136.profitableratecpm.com/82/8d/f0/828df0e382a857ec423b31dc5f20b5d4.js'></script>
+
 </body>
-  </html>
+</html>
