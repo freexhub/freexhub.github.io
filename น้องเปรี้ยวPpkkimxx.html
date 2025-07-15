@@ -174,13 +174,13 @@
   <div class="video-title">คลิปโป้ไทยล่าสุด น้องเปรี้ยว Ppkkimxx แม่สาวตัวเด็ดดาวโอนลี่แฟน ถ่างหีให้ผัวดูดแตดก่อนโดนเอาควยเสียบหีแบบเน้นๆ ร้องครางอย่างเสียวจนผัวเสียวหัวควยจนน้ำแตกในคารู</div>
 
   <div class="video-wrapper" id="videoWrapper" title="คลิกเพื่อดูต่อ">
-    <iframe id="videoPlayer" src="aHR0cHM6Ly9nZHBsYXllci52aXAvUzg1WTdGSks0Tkk2" allow="autoplay" allowfullscreen title="คลิปโป้ไทยล่าสุด น้องเปรี้ยว Ppkkimxx แม่สาวตัวเด็ดดาวโอนลี่แฟน ถ่างหีให้ผัวดูดแตดก่อนโดนเอาควยเสียบหีแบบเน้นๆ ร้องครางอย่างเสียวจนผัวเสียวหัวควยจนน้ำแตกในคารู"></iframe>
+    <iframe id="videoPlayer" src="" allow="autoplay" allowfullscreen title="คลิปโป้ไทยล่าสุด น้องเปรี้ยว Ppkkimxx แม่สาวตัวเด็ดดาวโอนลี่แฟน ถ่างหีให้ผัวดูดแตดก่อนโดนเอาควยเสียบหีแบบเน้นๆ ร้องครางอย่างเสียวจนผัวเสียวหัวควยจนน้ำแตกในคารู"></iframe>
   </div>
 
   <div class="btn-group" id="btnGroup">
-    <button data-src="https://gdplayer.vip/S85Y7FJK4NI6">สำรอง 1</button>
-    <button data-src="#">สำรอง 2</button>
-    <button data-src="#">สำรอง 3</button>
+    <button data-src="aHR0cHM6Ly9nZHBsYXllci52aXAvUzg1WTdGSks0Tkk2">สำรอง 1</button>
+    <button data-src="aHR0cHM6Ly9nZHBsYXllci52aXAvUzg1WTdGSks0Tkk3">สำรอง 2</button>
+    <button data-src="aHR0cHM6Ly9nZHBsYXllci52aXAvUzg1WTdGSks0Tkk4">สำรอง 3</button>
   </div>
 </main>
 
@@ -210,6 +210,16 @@
   const btnGroup = document.getElementById('btnGroup');
   const videoPlayer = document.getElementById('videoPlayer');
 
+  // ฟังก์ชันถอดรหัส base64
+  function decodeBase64Url(str) {
+    try {
+      return atob(str);
+    } catch (e) {
+      console.error('Error decoding base64:', e);
+      return '';
+    }
+  }
+
   // Toggle เมนูมือถือ
   menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
   menuToggle.addEventListener('keydown', e => {
@@ -219,11 +229,19 @@
     }
   });
 
-  // เปลี่ยนลิงก์สำรองวิดีโอ
+  // โหลดวิดีโอสำรอง 1 อัตโนมัติตอนเปิดเพจ
+  const firstBtn = btnGroup.querySelector('button[data-src]');
+  if (firstBtn) {
+    const decodedSrc = decodeBase64Url(firstBtn.getAttribute('data-src'));
+    videoPlayer.src = decodedSrc;
+  }
+
+  // เปลี่ยนลิงก์วิดีโอเมื่อกดปุ่มสำรอง
   btnGroup.querySelectorAll('button[data-src]').forEach(button => {
     button.addEventListener('click', () => {
-      const src = button.getAttribute('data-src');
-      videoPlayer.src = src;
+      const encodedSrc = button.getAttribute('data-src');
+      const decodedSrc = decodeBase64Url(encodedSrc);
+      videoPlayer.src = decodedSrc;
     });
   });
 </script>
