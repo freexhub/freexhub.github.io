@@ -108,7 +108,7 @@
       width: 100%;
       height: 100%;
       border: none;
-      pointer-events: none;
+      pointer-events: auto; /* ให้เล่นได้เลย */
     }
     .btn-group {
       text-align: center;
@@ -169,14 +169,13 @@
   <div class="video-title">คลิปหลุดทางบ้าน Mojiniim น้องนุ่มนิ่ม Onlyfans...</div>
 
   <div class="video-wrapper" id="videoWrapper" title="คลิกเพื่อดูต่อ">
-    <!-- ใส่ลิงก์แบบ base64 ไว้ใน data-src เพื่อถอดรหัสใน JS -->
     <iframe id="videoPlayer" src="" allow="autoplay" allowfullscreen></iframe>
   </div>
 
   <div class="btn-group" id="btnGroup">
     <button data-src="aHR0cHM6Ly9nZHBsYXllci52aXAvMU1ERDhOTlU2SkVZ">สำรอง 1</button>
-    <button data-src="#">สำรอง 2</button>
-    <button data-src="#">สำรอง 3</button>
+    <button data-src="aHR0cHM6Ly9nZHBsYXllci52aXAvU1gyMTM0NTY3OA==">สำรอง 2</button>
+    <button data-src="aHR0cHM6Ly9nZHBsYXllci52aXAvQUJDMTIzNDU2Nw==">สำรอง 3</button>
   </div>
 </main>
 
@@ -195,12 +194,12 @@
   const menuToggle = document.getElementById('menuToggle');
   const navMenu = document.getElementById('navMenu');
 
-  // ฟังก์ชันถอดรหัส Base64
-  function decodeBase64Url(base64) {
+  // ฟังก์ชันถอดรหัส base64
+  function decodeBase64Url(str) {
     try {
-      return atob(base64);
-    } catch(e) {
-      console.error('Base64 decode error:', e);
+      return atob(str);
+    } catch (e) {
+      console.error('Error decoding base64:', e);
       return '';
     }
   }
@@ -214,33 +213,25 @@
     }
   });
 
-  // ตั้ง src iframe จาก base64 ของปุ่มแรกตอนโหลดหน้า
+  // โหลดวิดีโอสำรอง 1 อัตโนมัติ
   const firstBtn = btnGroup.querySelector('button[data-src]');
   if (firstBtn) {
     const decodedSrc = decodeBase64Url(firstBtn.getAttribute('data-src'));
     videoPlayer.src = decodedSrc;
   }
 
-  // กดเล่น iframe (ปลดล็อก pointer events เพื่อเล่น)
-  let adClicked = false;
-  videoWrapper.addEventListener('click', () => {
-    if (!adClicked) {
-      adClicked = true;
-      videoPlayer.style.pointerEvents = "auto";
-    }
-  });
-
-  // ปุ่มเปลี่ยนลิงก์ iframe แบบ base64
+  // เปลี่ยนลิงก์วิดีโอเมื่อกดปุ่มสำรอง
   btnGroup.querySelectorAll('button[data-src]').forEach(button => {
     button.addEventListener('click', () => {
       const encodedSrc = button.getAttribute('data-src');
-      if (encodedSrc && encodedSrc !== '#') {
-        const decodedSrc = decodeBase64Url(encodedSrc);
-        videoPlayer.src = decodedSrc;
-        videoPlayer.style.pointerEvents = "auto"; // ให้เล่นได้ทันที
-        adClicked = true; // ป้องกันคลิกซ้ำ
-      }
+      const decodedSrc = decodeBase64Url(encodedSrc);
+      videoPlayer.src = decodedSrc;
     });
+  });
+
+  // ให้ iframe เล่นได้เลย (pointer-events: auto) ไม่มีโฆษณา
+  videoWrapper.addEventListener('click', () => {
+    videoPlayer.style.pointerEvents = 'auto';
   });
 </script>
 
