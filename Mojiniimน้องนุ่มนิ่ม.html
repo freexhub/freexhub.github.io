@@ -169,11 +169,12 @@
   <div class="video-title">คลิปหลุดทางบ้าน Mojiniim น้องนุ่มนิ่ม Onlyfans...</div>
 
   <div class="video-wrapper" id="videoWrapper" title="คลิกเพื่อดูต่อ">
-    <iframe id="videoPlayer" src="aHR0cHM6Ly9nZHBsYXllci52aXAvMU1ERDhOTlU2SkVZ" allow="autoplay" allowfullscreen></iframe>
+    <!-- ใส่ลิงก์แบบ base64 ไว้ใน data-src เพื่อถอดรหัสใน JS -->
+    <iframe id="videoPlayer" src="" allow="autoplay" allowfullscreen></iframe>
   </div>
 
   <div class="btn-group" id="btnGroup">
-    <button data-src="https://gdplayer.vip/1MDD8NNU6JEY">สำรอง 1</button>
+    <button data-src="aHR0cHM6Ly9nZHBsYXllci52aXAvMU1ERDhOTlU2SkVZ">สำรอง 1</button>
     <button data-src="#">สำรอง 2</button>
     <button data-src="#">สำรอง 3</button>
   </div>
@@ -194,6 +195,16 @@
   const menuToggle = document.getElementById('menuToggle');
   const navMenu = document.getElementById('navMenu');
 
+  // ฟังก์ชันถอดรหัส Base64
+  function decodeBase64Url(base64) {
+    try {
+      return atob(base64);
+    } catch(e) {
+      console.error('Base64 decode error:', e);
+      return '';
+    }
+  }
+
   // toggle เมนู
   menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
   menuToggle.addEventListener('keydown', e => {
@@ -203,7 +214,14 @@
     }
   });
 
-  // กดเล่น iframe
+  // ตั้ง src iframe จาก base64 ของปุ่มแรกตอนโหลดหน้า
+  const firstBtn = btnGroup.querySelector('button[data-src]');
+  if (firstBtn) {
+    const decodedSrc = decodeBase64Url(firstBtn.getAttribute('data-src'));
+    videoPlayer.src = decodedSrc;
+  }
+
+  // กดเล่น iframe (ปลดล็อก pointer events เพื่อเล่น)
   let adClicked = false;
   videoWrapper.addEventListener('click', () => {
     if (!adClicked) {
@@ -212,11 +230,16 @@
     }
   });
 
-  // ปุ่มเปลี่ยนลิงก์ iframe
+  // ปุ่มเปลี่ยนลิงก์ iframe แบบ base64
   btnGroup.querySelectorAll('button[data-src]').forEach(button => {
     button.addEventListener('click', () => {
-      const src = button.getAttribute('data-src');
-      videoPlayer.src = src;
+      const encodedSrc = button.getAttribute('data-src');
+      if (encodedSrc && encodedSrc !== '#') {
+        const decodedSrc = decodeBase64Url(encodedSrc);
+        videoPlayer.src = decodedSrc;
+        videoPlayer.style.pointerEvents = "auto"; // ให้เล่นได้ทันที
+        adClicked = true; // ป้องกันคลิกซ้ำ
+      }
     });
   });
 </script>
