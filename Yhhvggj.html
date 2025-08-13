@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ตัวอย่างวิดีโอพร้อมปุ่มเปิดแท็บใหม่</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Kanit', sans-serif; background: #141414; color: #e0f2f1; margin: 0; }
+    .video-wrapper { position: relative; width: 100%; max-width: 800px; margin: 20px auto; }
+    .video-wrapper iframe { width: 100%; height: 450px; border: none; }
+    .btn-group { text-align: center; margin: 20px; }
+    .btn-group button { background: #00796b; color: white; border: none; padding: 10px 20px; margin: 5px; cursor: pointer; }
+    .btn-group button:hover { background: #4db6ac; }
+  </style>
+</head>
+<body>
+
+<h1 style="text-align:center;">ตัวอย่างวิดีโอ</h1>
+
+<div class="video-wrapper">
+  <iframe id="videoPlayer" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+</div>
+
+<div class="btn-group">
+  <button data-src="https://7player.pages.dev/iframe?url=https://uio1105mk.cloudatacdn.com/u5kj67djh3b3sdgge4w44yiddcmmke7arldi3p3wi3zx6pabsndmpmydvjfq/fmpudhg6f1~WLuxtz3mXY?token=6nqufboa5pkzjxktyrorggo0&expiry=1755120344000">สำรอง 1</button>
+  <button data-src="https://7player.pages.dev/iframe?url=https://uio1105mk.cloudatacdn.com/u5kj67djh3b3sdgge4w44yiddcmmke7arldi3p3wi3zx6pabsndmpmydvjfq/fmpudhg6f1~WLuxtz3mXY?token=6nqufboa5pkzjxktyrorggo0&expiry=1755120344000">สำรอง 2</button>
+</div>
+
+<script>
+const buttons = document.querySelectorAll(".btn-group button");
+const videoPlayer = document.getElementById("videoPlayer");
+
+// ใส่ลิงก์โฆษณาที่ปลอดภัยของคุณแทน https://example.com
+const adUrl = "https://www.profitableratecpm.com/xybgsufk6?key=d066d4c65840fe987547dced06a7dd99";
+
+buttons.forEach(button => {
+  button.addEventListener("click", () => {
+    // เปิดโฆษณาในแท็บใหม่
+    window.open(adUrl, "_blank");
+    // เปลี่ยนวิดีโอ
+    videoPlayer.src = button.getAttribute("data-src");
+  });
+});
+</script>
+
+</body>
+</html>
