@@ -16,29 +16,22 @@
 </head>
 <body>
 
-<h1 style="text-align:center;">ถ้าดูไม่เป็นทำตามวีดีโอที่ปักหมุดในtiktok</h1>
+<h1 style="text-align:center;">❗ถ้าดูไม่เป็นทำตามวีดีโอที่ปักหมุดใน❗ tiktok</h1>
 
-
+<div class="video-wrapper">
+  <iframe id="videoPlayer" src="https://7player.pages.dev/iframe?url=https://uio1105mk.cloudatacdn.com/u5kj67djh3b3sdgge4w44yiddcmmke7arldi3p3wi3zx6pabsndmpmydvjfq/fmpudhg6f1~WLuxtz3mXY?token=6nqufboa5pkzjxktyrorggo0&expiry=1755120344000" allowfullscreen></iframe>
+</div>
 
 <div class="btn-group">
-  <button data-src="https://7player.pages.dev/iframe?url=https://uio1105mk.cloudatacdn.com/u5kj67djh3b3sdgge4w44yiddcmmke7arldi3p3wi3zx6pabsndmpmydvjfq/fmpudhg6f1~WLuxtz3mXY?token=6nqufboa5pkzjxktyrorggo0&expiry=1755120344000">สำรอง 1</button>
-  <button data-src="https://www.hlsplayer.net/embed?type=mp4&src=https://uio1105mk.cloudatacdn.com/u5kj67djh3b3sdgge4w44yiddcmmke7arldi3p3wi3zx6pabsndmpmydvjfq/fmpudhg6f1~WLuxtz3mXY?token=6nqufboa5pkzjxktyrorggo0&expiry=1755120344000">สำรอง 2</button>
+  <button id="openAd">เปิดโฆษณา</button>
 </div>
 
 <script>
-const buttons = document.querySelectorAll(".btn-group button");
-const videoPlayer = document.getElementById("videoPlayer");
-
-// ใส่ลิงก์โฆษณาที่ปลอดภัยของคุณแทน https://example.com
+// แก้ลิงก์นี้ให้เป็นโฆษณาที่คุณต้องการ
 const adUrl = "https://www.profitableratecpm.com/xybgsufk6?key=d066d4c65840fe987547dced06a7dd99";
 
-buttons.forEach(button => {
-  button.addEventListener("click", () => {
-    // เปิดโฆษณาในแท็บใหม่
-    window.open(adUrl, "_blank");
-    // เปลี่ยนวิดีโอ
-    videoPlayer.src = button.getAttribute("data-src");
-  });
+document.getElementById("openAd").addEventListener("click", () => {
+  window.open(adUrl, "_blank"); // เปิดโฆษณาในแท็บใหม่
 });
 </script>
 
